@@ -1,0 +1,239 @@
+tatya@DakuRemon:~/KPI/VROS/lab4$ mkdir units
+
+
+tatya@DakuRemon:~/KPI/VROS/lab4$ javac -classpath /home/tatya/Downloads/hadoop-core-1.2.1.jar -d units ProcessUnits.java 
+tatya@DakuRemon:~/KPI/VROS/lab4$ jar -cvf units.jar -C units/ .added manifest
+adding: hadoop/(in = 0) (out= 0)(stored 0%)
+adding: hadoop/ProcessUnits$E_EReduce.class(in = 1658) (out= 681)(deflated 58%)
+adding: hadoop/ProcessUnits$E_EMapper.class(in = 1892) (out= 776)(deflated 58%)
+adding: hadoop/ProcessUnits.class(in = 1565) (out= 765)(deflated 51%)
+
+tatya@DakuRemon:~/KPI/VROS/lab4$ /home/tatya/Downloads/hadoop/hadoop fs -mkdir input_dir 
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/tatya/Downloads/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+
+
+tatya@DakuRemon:~/KPI/VROS/lab4$ /home/tatya/Downloads/hadoop/hadoop fs -put /home/tatya/KPI/VROS/lab4/sample.txt  input_dir
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/tatya/Downloads/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Jan 14, 2021 1:23:04 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
+WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+tatya@DakuRemon:~/KPI/VROS/lab4$ /home/tatya/Downloads/hadoop/hadoop fs -ls input_dir/
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/tatya/Downloads/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Found 1 items
+-rwxrwxrwx   1 tatya tatya        218 2021-01-14 13:23 /home/tatya/KPI/VROS/lab4/input_dir/sample.txt
+
+
+tatya@DakuRemon:~/KPI/VROS/lab4$ /home/tatya/Downloads/hadoop/hadoop jar units.jar  hadoop.ProcessUnits input_dir/ output_d
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/tatya/Downloads/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Jan 14, 2021 1:35:59 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
+WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Jan 14, 2021 1:35:59 PM org.apache.hadoop.mapred.JobClient copyAndConfigureFiles
+WARNING: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+Jan 14, 2021 1:35:59 PM org.apache.hadoop.io.compress.snappy.LoadSnappy <clinit>
+WARNING: Snappy native library not loaded
+Jan 14, 2021 1:35:59 PM org.apache.hadoop.mapred.FileInputFormat listStatus
+INFO: Total input paths to process : 1
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.JobClient monitorAndPrintJob
+INFO: Running job: job_local126804512_0001
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job run
+INFO: Waiting for map tasks
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable run
+INFO: Starting task: attempt_local126804512_0001_m_000000_0
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.util.ProcessTree isSetsidSupported
+INFO: setsid exited with exit code 0
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Task initialize
+INFO:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@2a2696d2
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.MapTask updateJobWithSplit
+INFO: Processing split: file:/home/tatya/KPI/VROS/lab4/input_dir/sample.txt:0+218
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.MapTask runOldMapper
+INFO: numReduceTasks: 1
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.MapTask$MapOutputBuffer <init>
+INFO: io.sort.mb = 100
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.MapTask$MapOutputBuffer <init>
+INFO: data buffer = 79691776/99614720
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.MapTask$MapOutputBuffer <init>
+INFO: record buffer = 262144/327680
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.MapTask$MapOutputBuffer flush
+INFO: Starting flush of map output
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.MapTask$MapOutputBuffer sortAndSpill
+INFO: Finished spill 0
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Task done
+INFO: Task:attempt_local126804512_0001_m_000000_0 is done. And is in the process of commiting
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job statusUpdate
+INFO: file:/home/tatya/KPI/VROS/lab4/input_dir/sample.txt:0+218
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Task sendDone
+INFO: Task 'attempt_local126804512_0001_m_000000_0' done.
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable run
+INFO: Finishing task: attempt_local126804512_0001_m_000000_0
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job run
+INFO: Map task executor complete.
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Task initialize
+INFO:  Using ResourceCalculatorPlugin : org.apache.hadoop.util.LinuxResourceCalculatorPlugin@cba1d0c
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job statusUpdate
+INFO: 
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Merger$MergeQueue merge
+INFO: Merging 1 sorted segments
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Merger$MergeQueue merge
+INFO: Down to the last merge-pass, with 1 segments left of total size: 57 bytes
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job statusUpdate
+INFO: 
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Task done
+INFO: Task:attempt_local126804512_0001_r_000000_0 is done. And is in the process of commiting
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job statusUpdate
+INFO: 
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Task commit
+INFO: Task attempt_local126804512_0001_r_000000_0 is allowed to commit now
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.FileOutputCommitter commitTask
+INFO: Saved output of task 'attempt_local126804512_0001_r_000000_0' to file:/home/tatya/KPI/VROS/lab4/output_d
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job statusUpdate
+INFO: reduce > reduce
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.Task sendDone
+INFO: Task 'attempt_local126804512_0001_r_000000_0' done.
+Jan 14, 2021 1:36:00 PM org.apache.hadoop.mapred.LocalJobRunner$Job run
+WARNING: job_local126804512_0001
+java.lang.NoClassDefFoundError: org/apache/commons/httpclient/HttpMethod
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:421)
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpMethod
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 1 more
+
+Exception in thread "Thread-2" java.lang.NoClassDefFoundError: org/apache/commons/httpclient/HttpMethod
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:437)
+Caused by: java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpMethod
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	... 1 more
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.JobClient monitorAndPrintJob
+INFO:  map 100% reduce 100%
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.JobClient monitorAndPrintJob
+INFO: Job complete: job_local126804512_0001
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO: Counters: 21
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:   Map-Reduce Framework
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Spilled Records=10
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Map output materialized bytes=61
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Reduce input records=5
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Virtual memory (bytes) snapshot=0
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Map input records=5
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     SPLIT_RAW_BYTES=104
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Map output bytes=585
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Reduce shuffle bytes=0
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Physical memory (bytes) snapshot=0
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Map input bytes=218
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Reduce input groups=5
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Combine output records=5
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Reduce output records=5
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Map output records=65
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Combine input records=65
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     CPU time spent (ms)=0
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Total committed heap usage (bytes)=264241152
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:   File Input Format Counters 
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Bytes Read=230
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:   FileSystemCounters
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     FILE_BYTES_WRITTEN=109260
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     FILE_BYTES_READ=7053
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:   File Output Format Counters 
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.Counters log
+INFO:     Bytes Written=52
+Jan 14, 2021 1:36:01 PM org.apache.hadoop.mapred.JobClient runJob
+INFO: Job Failed: NA
+Exception in thread "main" java.io.IOException: Job failed!
+	at org.apache.hadoop.mapred.JobClient.runJob(JobClient.java:1357)
+	at hadoop.ProcessUnits.main(ProcessUnits.java:91)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:160)
+tatya@DakuRemon:~/KPI/VROS/lab4$ /home/tatya/Downloads/hadoop/hadoop jar units.jar  hadoop.ProcessUnits fs -cat output_d/part-00000 
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/tatya/Downloads/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Jan 14, 2021 1:37:24 PM org.apache.hadoop.util.NativeCodeLoader <clinit>
+WARNING: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Jan 14, 2021 1:37:24 PM org.apache.hadoop.mapred.JobClient copyAndConfigureFiles
+WARNING: Use GenericOptionsParser for parsing the arguments. Applications should implement Tool for the same.
+Jan 14, 2021 1:37:24 PM org.apache.hadoop.io.compress.snappy.LoadSnappy <clinit>
+WARNING: Snappy native library not loaded
+Jan 14, 2021 1:37:24 PM org.apache.hadoop.mapred.JobClient$2 run
+INFO: Cleaning up the staging area file:/tmp/hadoop-tatya/mapred/staging/tatya1993222998/.staging/job_local1993222998_0001
+Jan 14, 2021 1:37:24 PM org.apache.hadoop.security.UserGroupInformation doAs
+SEVERE: PriviledgedActionException as:tatya cause:org.apache.hadoop.mapred.InvalidInputException: Input path does not exist: file:/home/tatya/KPI/VROS/lab4/fs
+Exception in thread "main" org.apache.hadoop.mapred.InvalidInputException: Input path does not exist: file:/home/tatya/KPI/VROS/lab4/fs
+	at org.apache.hadoop.mapred.FileInputFormat.listStatus(FileInputFormat.java:197)
+	at org.apache.hadoop.mapred.FileInputFormat.getSplits(FileInputFormat.java:208)
+	at org.apache.hadoop.mapred.JobClient.writeOldSplits(JobClient.java:1081)
+	at org.apache.hadoop.mapred.JobClient.writeSplits(JobClient.java:1073)
+	at org.apache.hadoop.mapred.JobClient.access$700(JobClient.java:179)
+	at org.apache.hadoop.mapred.JobClient$2.run(JobClient.java:983)
+	at org.apache.hadoop.mapred.JobClient$2.run(JobClient.java:936)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAs(Subject.java:423)
+	at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1190)
+	at org.apache.hadoop.mapred.JobClient.submitJobInternal(JobClient.java:936)
+	at org.apache.hadoop.mapred.JobClient.submitJob(JobClient.java:910)
+	at org.apache.hadoop.mapred.JobClient.runJob(JobClient.java:1353)
+	at hadoop.ProcessUnits.main(ProcessUnits.java:91)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:160)
+
+
+tatya@DakuRemon:~/KPI/VROS/lab4$ /home/tatya/Downloads/hadoop/hadoop fs -cat output_d/part-00000 
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.hadoop.security.authentication.util.KerberosUtil (file:/home/tatya/Downloads/hadoop-core-1.2.1.jar) to method sun.security.krb5.Config.getInstance()
+WARNING: Please consider reporting this to the maintainers of org.apache.hadoop.security.authentication.util.KerberosUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+1979	24
+1980	29
+1981	33
+1984	39
+1985	36
+
